@@ -5,7 +5,7 @@ public class HelloHomeWork {
         System.out.println("This is my second HomeWork!");
         System.out.println("Message: ");
         Scanner scanner = new Scanner(System.in);
-        String userMassage = scanner.nextLine();
-        System.out.println("Your message: " + userMassage);
+        String userMessage = scanner.nextLine();
+        System.out.println("Your message: " + userMessage);
     }
 }
