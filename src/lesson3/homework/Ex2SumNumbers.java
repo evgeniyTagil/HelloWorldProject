@@ -1,8 +1,8 @@
-package lesson3.HomeWorkLesson3;
+package lesson3.homework;
 
 import java.util.Scanner;
 
-public class SumNumbersNum2 {
+public class Ex2SumNumbers {
     public static void main(String[] args) {
         System.out.println("Please write number: ");
 

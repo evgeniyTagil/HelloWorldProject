@@ -1,8 +1,8 @@
-package lesson3.HomeWorkLesson3;
+package lesson3.homework;
 
 import java.util.Scanner;
 
-public class RainbowNum1 {
+public class Ex1Rainbow {
     public static void main(String[] args) {
         System.out.println("Write your number");
         Scanner scanner = new Scanner(System.in);
@@ -20,9 +20,9 @@ public class RainbowNum1 {
                 break;
             case 6: System.out.println("This purple color");
                 break;
-                }
-        if (rainbow > 6){
-            System.out.println("Please enter a valid number from 1 to 6");
+            default: {
+                System.out.println("Please enter a valid number from 1 to 6");
+        }
         }
     }
 }

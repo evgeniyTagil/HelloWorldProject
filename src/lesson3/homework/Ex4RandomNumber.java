@@ -1,9 +1,9 @@
-package lesson3.HomeWorkLesson3;
+package lesson3.homework;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class RandomNumberNum4 {
+public class Ex4RandomNumber {
     public static void main(String[] args) {
         System.out.println("Hello, guess the number from 1 to 5");
 
@@ -14,7 +14,7 @@ public class RandomNumberNum4 {
         int userNumber = scanner.nextInt();
 
         if (userNumber == randomNumber) {
-            System.out.println("Try");
+            System.out.println("You are right");
         } else {
             System.out.println("Not: " + userNumber);
         }
