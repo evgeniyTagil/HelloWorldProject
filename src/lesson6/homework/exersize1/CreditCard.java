@@ -2,6 +2,8 @@ package lesson6.homework.exersize1;
 
 import java.util.Scanner;
 
+import static lesson6.homework.exersize1.MainClass.menu;
+
 public class CreditCard {
     private int accountNumber; //номер аккаунта
     private int sum; //сумма на счету
@@ -18,8 +20,8 @@ public class CreditCard {
         this.sum = sum;
         this.password = password;
     }
-    
-    public void replenishment(Scanner scanner) { //метод пополнения счета
+
+    public void replenishment(Scanner scanner) { //метод пополнения счета #1
         System.out.println("Вы хотите пополнить счет?! 1 - да; 2 - вернутся назад");
         if (scanner.nextInt() == 1) {
             System.out.println("Введите сумму для пополения: ");
@@ -35,12 +37,7 @@ public class CreditCard {
         }
     }
 
-    public void check() {
-        System.out.println("Ваш счет - " + getAccountNumber() + "; Сумма на счету: " + getSum() + "$");
-        menu();
-    }
-
-    public void withdrawMoney() { //метод снятия денег
+    public void withdrawMoney() { //метод снятия денег #2
         System.out.println("Текущее состояние счета: " + getSum());
         System.out.println("Введите сумму которую хотите снять: ");
         paymentSum = scanner.nextInt();
@@ -49,6 +46,11 @@ public class CreditCard {
             sum -= paymentSum;
         }
         System.out.println("Вы ввели не коректное значение");
+        menu();
+    }
+
+    public void check() { //метод инфо о счете #3
+        System.out.println("Ваш счет - " + getAccountNumber()+ "; Сумма на счету: " + getSum() + "$");
         menu();
     }
 
@@ -62,5 +64,9 @@ public class CreditCard {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public int getPassword() {
+        return password;
     }
 }

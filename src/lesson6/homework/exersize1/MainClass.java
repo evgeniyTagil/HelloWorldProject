@@ -4,38 +4,37 @@ import java.util.Scanner;
 
 public class MainClass {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        CreditCard creditCard = new CreditCard();
-        creditCard.authorization();
+        MainClass mainClass = new MainClass();
+        authorization();
+    }
 
 
         public static void authorization() {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Введите номер счета для авторизации: ");
             CreditCard accountOne = new CreditCard(1111, 12345, 1000);
             CreditCard accountTwo = new CreditCard(2222, 54321, 2000);
             CreditCard accountTree = new CreditCard(3333, 24680, 5000);
             switch (scanner.nextInt()) {
                 case 12345:
-                    System.out.println("Счет найден, пожалуйста введите пороль для авторизации: ");
+                    System.out.println("Счет найден, пожалуйста введите пароль для авторизации: ");
                     if (scanner.nextInt() == 1111) {
                         System.out.println("Вход выполнен успешно!");
-                        accountOne.menu();
+                        menu();
                     }
                     break;
                 case 54321:
-                    System.out.println("Счет найден, пожалуйста введите пороль для авторизации: ");
+                    System.out.println("Счет найден, пожалуйста введите пароль для авторизации: ");
                     if (scanner.nextInt() == 2222) {
                         System.out.println("Вход выполнен успешно!");
-                        accountOne.menu();
-                        accountTwo.menu();
+                        menu();
                     }
                     break;
                 case 24680:
-                    System.out.println("Счет найден, пожалуйста введите пороль для авторизации: ");
+                    System.out.println("Счет найден, пожалуйста введите пароль для авторизации: ");
                     if (scanner.nextInt() == 3333) {
                         System.out.println("Вход выполнен успешно!");
-                        accountOne.menu();
-                        accountTree.menu();
+                        menu();
                         break;
                     }
                 default:
@@ -53,7 +52,9 @@ public class MainClass {
             }
         }
 
-        public static void menu() { //Меню
+    public static void menu() { //Меню
+        Scanner scanner = new Scanner(System.in);
+        CreditCard creditCard = new CreditCard();
             System.out.println("------------------------------------------------");
             System.out.println("Добрый день, веберете интересующий вас вариант: ");
             System.out.println("1 - что-бы пополнить счет");
@@ -63,13 +64,13 @@ public class MainClass {
             System.out.println("------------------------------------------------");
             switch (scanner.nextInt()) {
                 case 1:
-                    replenishment(scanner);
+                    creditCard.replenishment(scanner);
                     break;
                 case 2:
-                    withdrawMoney();
+                    creditCard.withdrawMoney();
                     break;
                 case 3:
-                    check();
+                    creditCard.check();
                     break;
                 case 4:
                     System.out.println("Всего хорошего!");
@@ -82,4 +83,3 @@ public class MainClass {
             }
         }
     }
-}
