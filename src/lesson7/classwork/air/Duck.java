@@ -1,4 +1,4 @@
-package lesson7.air;
+package lesson7.classwork.air;
 
 public class Duck implements Flyable {
 

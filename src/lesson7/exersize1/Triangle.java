@@ -1,9 +1,10 @@
 package lesson7.exersize1;
 
-import java.util.Scanner;
+public class Triangle implements Figure{
 
-public class Rectangle implements Figure{
     ScannerMethod userData = new ScannerMethod();
+
+
     @Override
     public void square() {
         System.out.println("------------------------");
@@ -19,14 +20,14 @@ public class Rectangle implements Figure{
     @Override
     public void perimeter() {
         System.out.println("------------------------");
-        System.out.println("Для расчета периметра прямоугольника воспользуемся формулой: P = 2 × (a + b)");
-        System.out.println("a, b - стороны прямоугольника");
-        System.out.println("Введите а, b в такой последовательности - ");
+        System.out.println("Для расчета периметра треугольника воспользуемся формулой: P = a + b + c");
+        System.out.println("Где a, b, c - длина стороны");
+        System.out.println("Введите а, b, c в такой последовательности - ");
         int a = userData.scanner();
         int b = userData.scanner();
-        int two = 2;
-        int p = two * (a + b);
-        System.out.println("Периметр P равен - " + p);
+        int c = userData.scanner();
+        int p = a + b + c;
+        System.out.println("Периметр треугольника равен - " + p);
 
     }
 }

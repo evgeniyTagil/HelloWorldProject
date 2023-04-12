@@ -1,6 +1,6 @@
 package lesson7.exersize2;
 
-public interface Entity {
+public interface Employee {
 
     void post();
 }

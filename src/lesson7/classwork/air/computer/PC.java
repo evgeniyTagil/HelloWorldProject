@@ -1,6 +1,4 @@
-package lesson7.computer;
-
-import lesson7.computer.Comp;
+package lesson7.classwork.air.computer;
 
 public class PC extends Comp {//класс PC уноследовал все параметры у Comp
 

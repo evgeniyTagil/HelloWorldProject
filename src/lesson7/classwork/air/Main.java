@@ -1,11 +1,11 @@
-package lesson7;
+package lesson7.classwork.air;
 
-import lesson7.air.Airplane;
-import lesson7.air.Duck;
-import lesson7.air.Flyable;
-import lesson7.computer.Comp;
-import lesson7.computer.Laptop;
-import lesson7.computer.PC;
+import lesson7.classwork.air.Airplane;
+import lesson7.classwork.air.Duck;
+import lesson7.classwork.air.Flyable;
+import lesson7.classwork.air.computer.Comp;
+import lesson7.classwork.air.computer.Laptop;
+import lesson7.classwork.air.computer.PC;
 
 public class Main {
     public static void main(String[] args) {
