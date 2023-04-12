@@ -1,4 +1,4 @@
-package lesson7.computer;
+package lesson7.classwork.air.computer;
 
 public abstract class Comp{
     private String hdd;
