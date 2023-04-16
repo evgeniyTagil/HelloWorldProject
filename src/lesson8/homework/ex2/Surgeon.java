@@ -1,6 +1,6 @@
 package lesson8.homework.ex2;
 
-public class Surgeon implements Employee { //Хирург
+public class Surgeon implements Treatment { //Хирург
 
     @Override
     public void treat() {
