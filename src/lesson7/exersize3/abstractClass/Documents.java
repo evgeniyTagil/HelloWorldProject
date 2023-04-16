@@ -1,4 +1,4 @@
-package lesson7.exersize3;
+package lesson7.exersize3.abstractClass;
 
 import java.util.Date;
 

@@ -1,4 +1,7 @@
-package lesson7.exersize3;
+package lesson7.exersize3.impl;
+
+import lesson7.exersize3.abstractClass.Documents;
+import lesson7.exersize3.interfaces.Printable;
 
 import java.util.Date;
 
@@ -18,8 +21,10 @@ public class Contract extends Documents implements Printable {
         this.numberOfItems = numberOfItems;
     }
 
-    public Contract(int documentsNumber, Date documentsDate, Date documentDateOver) {
+    public Contract(int documentsNumber, Date documentsDate, Date documentDateOver,String contractType,int numberOfItems) {
         super(documentsNumber,documentsDate,documentDateOver);
+        this.contractType = contractType;
+        this.numberOfItems = numberOfItems;
     }
 
     public String getContractType() {
