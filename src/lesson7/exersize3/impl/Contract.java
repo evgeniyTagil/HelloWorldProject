@@ -1,7 +1,7 @@
 package lesson7.exersize3.impl;
 
-import lesson7.exersize3.abstractClass.Documents;
-import lesson7.exersize3.interfaces.Printable;
+import lesson7.exersize3.Documents;
+import lesson7.exersize3.Printable;
 
 import java.util.Date;
 
