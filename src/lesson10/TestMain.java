@@ -41,19 +41,19 @@ public class TestMain {
 
         System.out.println(myBestString.substring(5)); //вывод начиная с определенной позиции
 
-        System.out.println(myBestString.substring(5,7)); //вывод начиная с и по определенную позицию
+        System.out.println(myBestString.substring(5, 7)); //вывод начиная с и по определенную позицию
         System.out.println(str.toLowerCase()); //метод для написания текста в нижнем регистре
 
         System.out.println(str.toUpperCase()); //метод для написания текста в верхнем регистре
         System.out.println(str.equalsIgnoreCase(str3)); //метод сравнивает в не зависимости от регистра
 
-        System.out.println(str.replace('i','a')); //метод замены во всей строке символа 1 на символ 2
-        System.out.println(str.replace("is","as"));//меняет несколько символов идущих друг за другом
+        System.out.println(str.replace('i', 'a')); //метод замены во всей строке символа 1 на символ 2
+        System.out.println(str.replace("is", "as"));//меняет несколько символов идущих друг за другом
 
         System.out.println(str.contains("is")); //метод для проверки наличия значения в строке
 
         System.out.println(str.indexOf("is")); //метод ищет первую позицию в строке по 1-у символу сочетания
-        System.out.println(str.indexOf("is",2)); //аналогичен верхнему только ищет с указанного индекса
+        System.out.println(str.indexOf("is", 2)); //аналогичен верхнему только ищет с указанного индекса
         System.out.println(str.lastIndexOf("is")); //метод ищет последнюю позицию в строке по 1-у символу сочетания
         String str5 = " ";
         System.out.println("----------------------");
@@ -70,5 +70,6 @@ public class TestMain {
         System.out.println(Arrays.toString(myArr)); //с пробелом как разделитель
         System.out.println(Arrays.toString(myArr2)); //без пробела, без разделителя
 
+        System.out.println(str.contains("This")); //для проверки наличия указанного текса в нашем тексте
     }
 }
