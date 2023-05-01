@@ -30,20 +30,32 @@ public class MethodToImplement {
         System.out.println(string.endsWith("adc") & (string.endsWith("ABC")));
     }
 
-    public void checkNumbers(String string) throws CharacterSequenceException {
-        System.out.println(string.startsWith("555"));
+    public void checkNumbers(String string) throws NumbersSequenceException {
+        String numbersPattern = "555";
+        if (string.substring(0, 3).equals(numbersPattern)) {
+            System.out.println("Выявлено cовпадение по числовому индексу документа!");
+        } else {
+            new NumbersSequenceException("Numbers Exception in Index").printStackTrace();
+            System.out.println("Не совпадение по числовому индексу документа...");
+        }
     }
 
     public void checkEndString(String string) throws CharacterSequenceException {
-        System.out.println(string.endsWith("1a2b"));
+        if (string.endsWith("1a2b")) {
+            System.out.println("Выявлено совпадение по окончанию документа!");
+        } else {
+            new CharacterSequenceException("Character Exception At the End").printStackTrace();
+            System.out.println("Совпадение не выявлено по окончанию документа...");
+        }
     }
 
     public void checkInSymbols(String string) throws CharacterSequenceException {
-        String sample = "ABC";
-        if (string.substring(5, 8).equals(sample)) {
-            System.out.println("Совпало");
+        String samplePattern = "ABC";
+        if (string.substring(5, 8).equals(samplePattern)) {
+            System.out.println("Выявлено совпадение по приставке документа!");
         } else {
-            System.out.println("Не совпало");
+            new CharacterSequenceException("Character Exception in Prefix");
+            System.out.println("Совпадение по приставке документа не выявлено...");
         }
     }
 }
