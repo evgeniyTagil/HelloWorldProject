@@ -35,8 +35,7 @@ public class MethodToImplement {
         if (string.substring(0, 3).equals(numbersPattern)) {
             System.out.println("Выявлено cовпадение по числовому индексу документа!");
         } else {
-            new NumbersSequenceException("Numbers Exception in Index").printStackTrace();
-            System.out.println("Не совпадение по числовому индексу документа...");
+            throw new NumbersSequenceException("Numbers Exception in Index");
         }
     }
 
