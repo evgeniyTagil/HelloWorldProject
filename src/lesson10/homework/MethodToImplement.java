@@ -43,8 +43,7 @@ public class MethodToImplement {
         if (string.endsWith("1a2b")) {
             System.out.println("Выявлено совпадение по окончанию документа!");
         } else {
-            new CharacterSequenceException("Character Exception At the End").printStackTrace();
-            System.out.println("Совпадение не выявлено по окончанию документа...");
+            throw new CharacterSequenceException("Character Exception At the End");
         }
     }
 
@@ -53,8 +52,7 @@ public class MethodToImplement {
         if (string.substring(5, 8).equals(samplePattern)) {
             System.out.println("Выявлено совпадение по приставке документа!");
         } else {
-            new CharacterSequenceException("Character Exception in Prefix");
-            System.out.println("Совпадение по приставке документа не выявлено...");
+           throw  new CharacterSequenceException("Character Exception in Prefix");
         }
     }
 }
