@@ -1,5 +1,7 @@
 package lesson10.homework;
 
+import lesson11.WrongPasswordException;
+
 public class MethodToImplement {
 
     public void digitalOutput(String string) throws CharacterSequenceException {
@@ -52,7 +54,17 @@ public class MethodToImplement {
         if (string.substring(5, 8).equals(samplePattern)) {
             System.out.println("Выявлено совпадение по приставке документа!");
         } else {
-           throw  new CharacterSequenceException("Character Exception in Prefix");
+            throw new CharacterSequenceException("Character Exception in Prefix");
         }
+    }
+
+    public void checkInString(String string) throws WrongPasswordException {
+        for (int i = 0; i < string.length(); i++) {
+            if (Character.isDigit(string.charAt(i))) {
+            } else {
+                throw new WrongPasswordException("This String not a numbers");
+            }
+        }
+        System.out.println("This String of numbers");
     }
 }
