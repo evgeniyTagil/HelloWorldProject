@@ -1,7 +1,5 @@
 package lesson10.homework;
 
-import lesson11.WrongPasswordException;
-
 public class MethodToImplement {
 
     public void digitalOutput(String string) throws CharacterSequenceException {
@@ -58,11 +56,11 @@ public class MethodToImplement {
         }
     }
 
-    public void checkInString(String string) throws WrongPasswordException {
+    public void checkInString(String string) throws WrongLetterException {
         for (int i = 0; i < string.length(); i++) {
             if (Character.isDigit(string.charAt(i))) {
             } else {
-                throw new WrongPasswordException("This String not a numbers");
+                throw new WrongLetterException("This String not a numbers");
             }
         }
         System.out.println("This String of numbers");
