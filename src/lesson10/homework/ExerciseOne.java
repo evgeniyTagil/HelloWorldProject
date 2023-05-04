@@ -1,21 +1,26 @@
 package lesson10.homework;
 
-import java.util.Scanner;
+import lesson11.WrongPasswordException;
 
-public class ExerciseOne{
-    public static void main(String[] args) {
-        String string = "1111-AAA-1111-AAA-1A1A";
-        /*
-        Сделал доступ реализацию доступа специально разную
-         */
+public class ExerciseOne {
+    public static void main(String[] args) throws CharacterSequenceException, NumbersSequenceException, WrongLetterException {
+        String string = "5551-ABC-1111-AAA-1a2b";
         MethodToImplement method = new MethodToImplement();
-        method.digitalOutput(string); //при обычном методе
-        MethodToImplement.replacement(string);
-        MethodToImplement.printLetters(string);
-        MethodToImplement.checkLetters(string);
-        MethodToImplement.checkNumbers(string);
-        MethodToImplement.checkEndString(string);
+        try {
+            method.checkInSymbols(string);
+            method.checkNumbers(string);
+            method.checkEndString(string);
+        } catch (CharacterSequenceException | NumbersSequenceException e) {
+            throw new CharacterSequenceException("Exception");
+        }
 
+        String str = "2424";
+        try {
+            method.checkInString(str);
+        }catch (WrongLetterException e){
+            throw new WrongLetterException("EXCEPTION");
+        }
 
+        System.out.println("The end");
     }
 }
