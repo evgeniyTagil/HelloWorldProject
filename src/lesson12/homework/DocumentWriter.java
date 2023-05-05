@@ -18,11 +18,12 @@ public class DocumentWriter {
         Scanner scanner = new Scanner(System.in);
         try (FileWriter writer = new FileWriter("documents.doc", true);) {
             int stringLength = 5;
-            long userDocNum;
+            String userDocNum;
+            boolean isTrue = true;
             do {
                 System.out.println("Please, write document number");
-                userDocNum = scanner.nextInt();
-                if (String.valueOf(userDocNum).length() == stringLength) {
+                userDocNum = scanner.nextLine();
+                if (userDocNum.matches("\\d+") == isTrue && userDocNum.length() == stringLength) {
                     writer.write("Document number: " + userDocNum + "\n");
                 } else {
                     System.out.println("The length of the document number must be 15 characters");
@@ -34,8 +35,7 @@ public class DocumentWriter {
                     writerNotValid.flush();
                     System.out.println("Please try again");
                 }
-            } while (String.valueOf(userDocNum).length() != stringLength);
-
+            } while (userDocNum.matches("\\d+") != isTrue || userDocNum.length() != stringLength);
         } catch (InputMismatchException | IOException e) {
             throw new RuntimeException(e);
         }

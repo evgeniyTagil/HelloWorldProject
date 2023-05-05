@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class DocumentReader {
     public void reader(){
         Scanner scr = new Scanner(System.in);
-        System.out.println("Пожалуйста, введите название документа");
+        System.out.println("Please, enter document name");
         try (FileReader reader = new FileReader(scr.nextLine());){
             Scanner scanner = new Scanner(reader);
             while (scanner.hasNext()){
