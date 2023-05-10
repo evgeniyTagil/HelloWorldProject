@@ -1,8 +1,6 @@
 package lesson12.homework;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,28 +14,40 @@ public class DocumentWriter {
             throw new RuntimeException(e);
         }
         Scanner scanner = new Scanner(System.in);
-        try (FileWriter writer = new FileWriter("documents.doc", true);) {
+        try (FileWriter writer = new FileWriter("documents.doc", true);
+             FileWriter writerNotValid = new FileWriter("NotValidNumbers.doc", true)) {
             int stringLength = 5;
             String userDocNum;
             boolean isTrue = true;
             do {
+                System.out.println("--------------------------------");
                 System.out.println("Please, write document number");
                 userDocNum = scanner.nextLine();
-                if (userDocNum.matches("\\d+") == isTrue && userDocNum.length() == stringLength) {
-                    writer.write("Document number: " + userDocNum + "\n");
+                if (isDocumentNumberCorrect(stringLength, userDocNum, isTrue)) {
+                        writer.write("Document number: " + userDocNum + "\n");
                 } else {
-                    System.out.println("The length of the document number must be 15 characters");
+                    System.out.println("--------------------------------");
+                    System.out.println("The length of the document number must be 5 numbers and be unique");
                     System.out.println("Your number document get in file " + "NotValidNumbers.doc");
-                    FileWriter writerNotValid = new FileWriter("NotValidNumbers.doc",true);
                     File notValid = new File("NotValidNumbers.doc");
                     notValid.createNewFile();
                     writerNotValid.write("Not valid document number: " + userDocNum + "\n");
                     writerNotValid.flush();
-                    System.out.println("Please try again");
+                    System.out.println("Try again");
                 }
-            } while (userDocNum.matches("\\d+") != isTrue || userDocNum.length() != stringLength);
+            } while (isDocumentNumberNotCorrect(stringLength, userDocNum, isTrue));
         } catch (InputMismatchException | IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static boolean isDocumentNumberNotCorrect(int stringLength, String userDocNum, boolean isTrue) {
+        return userDocNum.matches("\\d+") != isTrue || userDocNum.length() != stringLength
+                || TestCheck.checkContent(userDocNum) == isTrue;
+    }
+
+    private static boolean isDocumentNumberCorrect(int stringLength, String userDocNum, boolean isTrue) {
+        return userDocNum.matches("\\d+") == isTrue && userDocNum.length() == stringLength
+                && TestCheck.checkContent(userDocNum) != isTrue;
     }
 }

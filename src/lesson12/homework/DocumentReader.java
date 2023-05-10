@@ -16,7 +16,5 @@ public class DocumentReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }

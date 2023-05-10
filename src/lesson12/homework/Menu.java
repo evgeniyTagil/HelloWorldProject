@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class Menu {
     public static void menu(){
-        System.out.println("Hello, press 1 if you want to write the document or 2 if you want to read the content");
+        System.out.println("--------------------------------");
+        System.out.println("Hello, wot do you want:");
+        System.out.println("Please, enter #1 for write document number");
+        System.out.println("Enter #2 for read all numbers documents");
+        System.out.println("Or 3 for exit");
         Scanner scanner = new Scanner(System.in);
         int userNum = scanner.nextInt();
         switch (userNum){
@@ -16,10 +20,11 @@ public class Menu {
                 DocumentReader reader = new DocumentReader();
                 reader.reader();
                 break;
+            case 3:
+                System.out.println("Thanks, good bye!");
+                break;
             default:
-                menu();
                 break;
         }
     }
-
 }
