@@ -1,4 +1,4 @@
-package classwork.c19.Threads;
+package lesson19_threads;
 
 import java.util.Random;
 
