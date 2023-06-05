@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 public class MyThreadMain {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Start: " + LocalDateTime.now());
-        classwork.c19.Threads.MyThread thread1 = new classwork.c19.Threads.MyThread("First");
-        classwork.c19.Threads.MyThread thread2 = new classwork.c19.Threads.MyThread("Second");
-        classwork.c19.Threads.MyThread thread3 = new classwork.c19.Threads.MyThread("Third");
+        MyThread thread1 = new MyThread("First");
+        MyThread thread2 = new MyThread("Second");
+        MyThread thread3 = new MyThread("Third");
         thread3.setDaemon(true);
         thread1.start();
         System.out.println(thread1.isAlive());
