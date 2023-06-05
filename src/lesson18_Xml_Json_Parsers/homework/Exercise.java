@@ -1,5 +1,6 @@
 package lesson18_Xml_Json_Parsers.homework;
 
+import lesson12.homework.DocumentReader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -10,7 +11,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Exercise {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
@@ -22,20 +26,23 @@ public class Exercise {
         Document document = builder.parse(file);
 
         Element element = document.getDocumentElement();
-//        System.out.println(element.getTagName());
-        NodeList nodeList = element.getChildNodes();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < nodeList.getLength() + nodeList.getLength(); i++) {
-//            Node current = nodeList.item(i);
-//            System.out.println("Element: " + current.getNodeName());
-//            System.out.println(element.getAttribute("lines"));
-            System.out.println(element.getElementsByTagName("line").item(i).getTextContent());
-            stringBuilder.append(element.getElementsByTagName("line").item(i).getTextContent());
+        NodeList nodeList = element.getElementsByTagName("line");
+        File newFile = new File("18lesson.txt");
+        newFile.createNewFile();
+        FileWriter fileWriter = new FileWriter(newFile);
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node current = nodeList.item(i);
+            String content = current.getTextContent() + "\n";
+            fileWriter.write(content);
         }
-        File newXmlFile = new File("newFile.xml");
-
-        System.out.println("--------");
-        System.out.println(stringBuilder);
-
+        fileWriter.close();
+        try (FileReader reader = new FileReader(newFile)) {
+            Scanner scanner = new Scanner(reader);
+            while (scanner.hasNext()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
