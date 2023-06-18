@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectToDataBase {
+public class DataBaseConnector {
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/students", "root", "root")){
             connection.setAutoCommit(false);
