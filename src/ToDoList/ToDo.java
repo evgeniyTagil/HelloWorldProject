@@ -6,21 +6,14 @@ public class ToDo {
     private String taskDay;
     private String taskName;
     private String priority;
-    private boolean status;
+    private String status;
 
-    public ToDo(int taskNumber, String taskDay, String taskName, String priority, boolean status) {
+    public ToDo(int taskNumber, String taskDay, String taskName, String priority, String status) {
         this.taskNumber = taskNumber;
         this.taskDay = taskDay;
         this.taskName = taskName;
         this.priority = priority;
         this.status = status;
-    }
-
-    public ToDo(int taskNumber, String taskDay, String taskName, String priority) {
-        this.taskNumber = taskNumber;
-        this.taskDay = taskDay;
-        this.taskName = taskName;
-        this.priority = priority;
     }
 
     public ToDo() {
@@ -59,11 +52,26 @@ public class ToDo {
         this.priority = priority;
     }
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDo{" + "\n" +
+                "TaskNumber = " + taskNumber + ";" + "\n" +
+                "TaskDay = " + taskDay + ";" + "\n" +
+                "TaskName = " + taskName + ";" + "\n" +
+                "Priority = " + priority + ";" + "\n" +
+                "Status = " + status + ";" + "\n" +
+                '}';
     }
 }
