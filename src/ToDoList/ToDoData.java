@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ToDoData {
 
-    public static final File FILE = new File("C:\\Users\\user\\IdeaProjects\\HelloWorldProject\\src\\ToDoList\\ToDo.json");
+    public static final File FILE = new File("C:\\Users\\user\\IdeaProjects\\HelloWorldProject\\ToDo.json");
     public static int taskCounter;
 
     public void createNewTask() {
@@ -37,28 +37,28 @@ public class ToDoData {
     }
 
     private static void saveToList(ToDo toDo) {
-        addToJson(FILE, toDo);
+        addToJson(toDo);
     }
 
-    private static void addToJson(File file, ToDo toDoListData) {
+    private static void addToJson(ToDo toDoListData) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             List<ToDo> existingTasks = new ArrayList<>();
-            if (file.exists()) {
-                String jsonContent = new String(Files.readAllBytes(file.toPath()));
+            if (ToDoData.FILE.exists()) {
+                String jsonContent = new String(Files.readAllBytes(ToDoData.FILE.toPath()));
                 existingTasks = mapper.readValue(jsonContent, mapper.getTypeFactory().constructCollectionType(List.class, ToDo.class));
             }
             existingTasks.add(toDoListData);
             for (int i = 0; i < existingTasks.size(); i++) {
                 existingTasks.get(i).setTaskNumber(i + 1);
             }
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, existingTasks);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(ToDoData.FILE, existingTasks);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void getAllTask(String filePath, List<ToDo> toDoList) {
+    public void printAllTasks(String filePath, List<ToDo> toDoList) {
         File file = new File(filePath);
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -74,10 +74,29 @@ public class ToDoData {
 
     private static List<ToDo> parsMethod(File file, ObjectMapper mapper) throws IOException {
         String jsonContent = new String(Files.readAllBytes(Paths.get(file.getPath())));
-        List<ToDo> tasks = mapper.readValue(jsonContent, mapper.getTypeFactory().constructCollectionType(List.class, ToDo.class));
-        return tasks;
+        return mapper.readValue(jsonContent, mapper.getTypeFactory().constructCollectionType(List.class, ToDo.class));
     }
 
+    public static void goToCurrentTask(Scanner scanner, ToDoData toDoData) {
+        List<ToDo> toDoList = new ArrayList<>();
+        System.out.println("------------------------------------------------");
+        System.out.println("1 - что-бы просмотреть все задачи нажмите;");
+        System.out.println("2 - что-бы посмотреть задачу по номеру нажмите;");
+        System.out.println("3 - что-бы изменить задачу нажмите;");
+        System.out.println("4 - что-бы вернутся в меню!");
+        System.out.println("------------------------------------------------");
+        int userVar = scanner.nextInt();
+        if (userVar == 1) {
+            toDoData.printAllTasks(FILE.getPath(), toDoList);
+            MenuToDo.menu();
+        } else if (userVar == 2) {
+            toDoData.printTask(FILE.getPath());
+            MenuToDo.menu();
+        }else if (userVar == 3){
+            toDoData.correctTask(FILE.getPath());
+            MenuToDo.menu();
+        }
+    }
     public void correctTask(String filePath) {
         File file = new File(filePath);
         ObjectMapper mapper = new ObjectMapper();
@@ -104,27 +123,12 @@ public class ToDoData {
                 int choice = scanner.nextInt();
                 scanner.nextLine();
                 switch (choice) {
-                    case 1:
-                        System.out.println("------------------------------------------------");
-                        System.out.println("Введите новый статус задачи:");
-                        String newStatus = scanner.nextLine();
-                        selectedTask.setStatus(newStatus);
-                        System.out.println("------------------------------------------------");
-                        System.out.println("Статус успешно изменен!");
-                        MenuToDo.menu();
-                        break;
-                    case 2:
-                        System.out.println("------------------------------------------------");
-                        System.out.println("Введите новое название задачи:");
-                        String newTaskName = scanner.nextLine();
-                        selectedTask.setTaskName(newTaskName);
-                        System.out.println("------------------------------------------------");
-                        System.out.println("Название успешно изменено!");
-                        MenuToDo.menu();
-                        break;
-                    default:
+                    case 1 -> changeTaskStatus(scanner, selectedTask);
+                    case 2 -> updateTaskName(scanner, selectedTask);
+                    default -> {
                         System.out.println("Некорректный выбор.");
                         return;
+                    }
                 }
                 mapper.writeValue(file, tasks);
             } else {
@@ -135,7 +139,27 @@ public class ToDoData {
         }
     }
 
-    public void getOneTask(String filePath) {
+    private static void updateTaskName(Scanner scanner, ToDo selectedTask) {
+        System.out.println("------------------------------------------------");
+        System.out.println("Введите новое название задачи:");
+        String newTaskName = scanner.nextLine();
+        selectedTask.setTaskName(newTaskName);
+        System.out.println("------------------------------------------------");
+        System.out.println("Название успешно изменено!");
+        MenuToDo.menu();
+    }
+
+    private static void changeTaskStatus(Scanner scanner, ToDo selectedTask) {
+        System.out.println("------------------------------------------------");
+        System.out.println("Введите новый статус задачи:");
+        String newStatus = scanner.nextLine();
+        selectedTask.setStatus(newStatus);
+        System.out.println("------------------------------------------------");
+        System.out.println("Статус успешно изменен!");
+        MenuToDo.menu();
+    }
+
+    public void printTask(String filePath) {
         File file = new File(filePath);
         ObjectMapper mapper = new ObjectMapper();
         try {
