@@ -52,10 +52,6 @@ public class ToDo {
         this.priority = priority;
     }
 
-    public String isStatus() {
-        return status;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
